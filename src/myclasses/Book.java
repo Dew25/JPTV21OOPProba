@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @author Melnikov
  */
 public class Book {
-    private Author[] authors;
+    private Author[] authors = new Author[0];
     private String caption;
 
     public Book() {
@@ -24,6 +24,12 @@ public class Book {
 
     public void setAuthors(Author[] authors) {
         this.authors = authors;
+    }
+    public void addAuthor(Author author){
+        int countAuthors = this.authors.length;
+        Author[] newAuthors = Arrays.copyOf(this.authors, countAuthors+1);
+        newAuthors[countAuthors] = author;
+        this.authors = newAuthors;
     }
 
     public String getCaption() {
@@ -37,9 +43,9 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" 
-                + "authors=" + Arrays.toString(authors)
-                + ", caption=" + caption 
-                + '}';
+                + ",\n caption=" + caption 
+                + "\n authors=" + Arrays.toString(authors)
+                + "\n"+'}';
     }
     
 }
